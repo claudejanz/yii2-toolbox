@@ -27,7 +27,7 @@ class CssClassWidget extends InputWidget {
 
         echo Html::activeHiddenInput($this->model, $this->attribute);
 
-        echo Html::beginTag('div', ['id' => $wid . '-buttons', 'class' => 'btn-group']);
+        echo Html::beginTag('div', ['id' => $wid . '-buttons', 'class' => 'input-group btn-group']);
         $items = CssClassBehavior::getClassCssTextOptions();
         $colors = CssClassBehavior::getClassCssOptions();
         foreach ($items as $key => $item) {

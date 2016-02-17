@@ -27,13 +27,13 @@ class PublishWidget extends InputWidget {
 
         echo Html::activeHiddenInput($this->model, $this->attribute);
 
-        echo Html::beginTag('div', ['id' => $wid . '-buttons', 'class' => 'btn-group']);
+        echo Html::beginTag('div', ['id' => $wid . '-buttons', 'class' => 'input-group btn-group']);
         $items = PublishBehavior::getPublishedOptions();
         $colors = [
             PublishBehavior::PUBLISHED_DRAFT=>'btn-danger',
             PublishBehavior::PUBLISHED_VALIDATED=>'btn-warning',
             PublishBehavior::PUBLISHED_ACTIF=>'btn-success',
-            PublishBehavior::PUBLISHED_VALIDATED=>'btn-info'
+            PublishBehavior::PUBLISHED_DELETED=>'btn-info'
                 ];
         foreach ($items as $key => $item) {
             echo Html::button($item, ['data' => ['value' => $key], 'class' => ($key == $this->model->{$this->attribute} ? 'btn '.$colors[$key].' active' : 'btn btn-default')]);
@@ -50,7 +50,6 @@ class PublishWidget extends InputWidget {
      var color=$js_colors;
      $(this).removeClass('btn-default');
      $(this).addClass(color[$(this).data('value')]+' active');
-     console.log(color[$(this).data('value')]);
      $('#{$wid}').val($(this).data('value'))
    });  
 });               
