@@ -2,7 +2,7 @@
 
 namespace claudejanz\toolbox\widgets\inputs;
 
-use app\models\behaviors\PublishBehavior;
+use claudejanz\toolbox\models\behaviors\PublishBehavior;
 use kartik\helpers\Html;
 use yii\helpers\Json;
 use yii\widgets\InputWidget;

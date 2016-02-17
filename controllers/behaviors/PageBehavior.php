@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace app\controllers\behaviors;
+namespace claudejanz\toolbox\controllers\behaviors;
 
 use app\models\Page;
 use Yii;
