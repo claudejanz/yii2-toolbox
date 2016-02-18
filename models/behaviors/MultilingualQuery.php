@@ -1,5 +1,5 @@
 <?php
-namespace claudejanz\multilingual;
+namespace claudejanz\toolbox\models\behaviors;
 
 use Yii;
 use yii\db\ActiveQuery;

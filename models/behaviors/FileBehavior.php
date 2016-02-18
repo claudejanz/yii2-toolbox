@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace claudejanz\fileBehavior;
+namespace claudejanz\toolbox\models\behaviors;
 
 use Yii;
 use yii\base\Behavior;
