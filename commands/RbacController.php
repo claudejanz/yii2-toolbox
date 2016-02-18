@@ -16,7 +16,7 @@ use yii\helpers\Console;
 /**
  * This command adds rbac entrys.
  *
- * @moderator Claude Janz <claude.janz@gmail.com>
+ * @author Claude Janz <claude.janz@gmail.com>
  * @since 2.0
  */
 class RbacController extends Controller {
@@ -26,6 +26,7 @@ class RbacController extends Controller {
 
         $total = 13;
         Console::startProgress(0, $total, 'Doing Updates: ', false);
+        $i=1;
      
      
         $auth->removeAll();
@@ -34,25 +35,24 @@ class RbacController extends Controller {
         $view = $auth->createPermission('view');
         $view->description = 'visualiser un enregistrement';
         $auth->add($view);
-        
-        Console::updateProgress(1, $total);
+        Console::updateProgress($i++, $total);
 
         // add "create" permission
         $create = $auth->createPermission('create');
         $create->description = 'créer enregistrement';
         $auth->add($create);
-        Console::updateProgress(2, $total);
+        Console::updateProgress($i++, $total);
         
         // add "update" permission
         $update = $auth->createPermission('update');
         $update->description = 'update enregistrement';
         $auth->add($update);
-        Console::updateProgress(3, $total);
+        Console::updateProgress($i++, $total);
         
 // add an own rule the rule
         $rule = new OwnRule();
         $auth->add($rule);
-        Console::updateProgress(4, $total);
+        Console::updateProgress($i++, $total);
 
         // add the "updateOwn" permission and associate the rule with it.
         $updateOwn = $auth->createPermission('updateOwn');
@@ -60,19 +60,21 @@ class RbacController extends Controller {
         $updateOwn->ruleName = $rule->name;
         $auth->add($updateOwn);
         $auth->addChild($updateOwn,$update);
-        Console::updateProgress(5, $total);
+        Console::updateProgress($i++, $total);
         
         // add "publish" permission
         $publish = $auth->createPermission('publish');
         $publish->description = 'publish enregistrement';
         $auth->add($publish);
-        Console::updateProgress(6, $total);
+        Console::updateProgress($i++, $total);
+        
+        
         
         // add "delete" permission
         $delete = $auth->createPermission('delete');
         $delete->description = 'delete enregistrement';
         $auth->add($delete);
-        Console::updateProgress(7, $total);
+        Console::updateProgress($i++, $total);
         
         // add the "deleteOwn" permission and associate the rule with it.
         $deleteOwn = $auth->createPermission('deleteOwn');
@@ -80,7 +82,7 @@ class RbacController extends Controller {
         $deleteOwn->ruleName = $rule->name;
         $auth->add($deleteOwn);
         $auth->addChild($deleteOwn,$delete);
-        Console::updateProgress(8, $total);
+        Console::updateProgress($i++, $total);
 
         
         /**
@@ -90,7 +92,7 @@ class RbacController extends Controller {
         $normal = $auth->createRole('normal');
         $auth->add($normal);
         $auth->addChild($normal, $view);
-        Console::updateProgress(9, $total);
+        Console::updateProgress($i++, $total);
 
         // add "editor" role and give this role the "create" permission
         // as well as the permissions of the "normal" role
@@ -100,32 +102,32 @@ class RbacController extends Controller {
         $auth->addChild($editor, $updateOwn);
         $auth->addChild($editor, $deleteOwn);
         $auth->addChild($editor, $normal);
-        Console::updateProgress(10, $total);
+        Console::updateProgress($i++, $total);
 
-        // add "moderator" role and give this role the "publish" permission
+        // add "publisher" role and give this role the "publish" permission
         // as well as the permissions of the "editor" role
-        $moderator = $auth->createRole('moderator');
-        $auth->add($moderator);
-        $auth->addChild($moderator, $publish);
-        $auth->addChild($moderator, $editor);
-        Console::updateProgress(11, $total);
+        $publisher = $auth->createRole('publisher');
+        $auth->add($publisher);
+        $auth->addChild($publisher, $publish);
+        $auth->addChild($publisher, $editor);
+        Console::updateProgress($i++, $total);
         
         
         // add "admin" role and give this role the "update" permission
-        // as well as the permissions of the "moderator" role
+        // as well as the permissions of the "publisher" role
         $admin = $auth->createRole('admin');
         $auth->add($admin);
         $auth->addChild($admin, $update);
         $auth->addChild($admin, $delete);
-        $auth->addChild($admin, $moderator);
-        Console::updateProgress(12, $total);
+        $auth->addChild($admin, $publisher);
+        Console::updateProgress($i++, $total);
 
         // Assign roles to users. 10, 14 and 26 are IDs returned by IdentityInterface::getId()
         // usually implemented in your User model.
         $auth->assign($normal, 3);
         $auth->assign($admin, 2);
         $auth->assign($admin, 1);
-        Console::updateProgress(13, $total);
+        Console::updateProgress($i++, $total);
         
         Console::endProgress("done." . PHP_EOL);
         
