@@ -30,6 +30,14 @@ class PublishBehavior extends Behavior {
             self::PUBLISHED_DELETED => Yii::t('core', 'Archived'),
         );
     }
+    public static function getPublishedColors() {
+        return array(
+            self::PUBLISHED_DRAFT=>'danger',
+            self::PUBLISHED_VALIDATED=>'warning',
+            self::PUBLISHED_ACTIF=>'success',
+            self::PUBLISHED_DELETED=>'info'
+        );
+    }
 
     /**
      * @return string display text for the current Published
@@ -37,7 +45,16 @@ class PublishBehavior extends Behavior {
     public function getPublishedLabel() {
         $model = $this->owner;
         $publishedOptions = self::getPublishedOptions();
-        return isset($publishedOptions[$model->id]) ? $publishedOptions[$model->id] : "unknown published ($model->id)";
+        return isset($publishedOptions[$model->published]) ? $publishedOptions[$model->published] : "unknown published ($model->published)";
+    }
+    
+    /**
+     * @return string display text for the current Published
+     */
+    public function getPublishedColor() {
+        $model = $this->owner;
+        $publishedOptions = self::getPublishedColors();
+        return isset($publishedOptions[$model->published]) ? $publishedOptions[$model->published] : "unknown published ($model->published)";
     }
 
    

@@ -89,7 +89,7 @@ class RbacController extends Controller {
          * USER
          */
         // add "normal" role and give this role the "create" permission
-        $normal = $auth->createRole('normal');
+        $normal = $auth->createRole('viewer');
         $auth->add($normal);
         $auth->addChild($normal, $view);
         Console::updateProgress($i++, $total);

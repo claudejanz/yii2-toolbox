@@ -29,14 +29,9 @@ class PublishWidget extends InputWidget {
 
         echo Html::beginTag('div', ['id' => $wid . '-buttons', 'class' => 'input-group btn-group']);
         $items = PublishBehavior::getPublishedOptions();
-        $colors = [
-            PublishBehavior::PUBLISHED_DRAFT=>'btn-danger',
-            PublishBehavior::PUBLISHED_VALIDATED=>'btn-warning',
-            PublishBehavior::PUBLISHED_ACTIF=>'btn-success',
-            PublishBehavior::PUBLISHED_DELETED=>'btn-info'
-                ];
+        $colors = PublishBehavior::getPublishedColors();
         foreach ($items as $key => $item) {
-            echo Html::button($item, ['data' => ['value' => $key], 'class' => ($key == $this->model->{$this->attribute} ? 'btn '.$colors[$key].' active' : 'btn btn-default')]);
+            echo Html::button($item, ['data' => ['value' => $key], 'class' => ($key == $this->model->{$this->attribute} ? 'btn btn-'.$colors[$key].' active' : 'btn btn-default')]);
         }
         echo Html::endTag('div');
         $js_colors = Json::encode($colors);
@@ -49,7 +44,7 @@ class PublishWidget extends InputWidget {
      });
      var color=$js_colors;
      $(this).removeClass('btn-default');
-     $(this).addClass(color[$(this).data('value')]+' active');
+     $(this).addClass('btn-'+color[$(this).data('value')]+' active');
      $('#{$wid}').val($(this).data('value'))
    });  
 });               
