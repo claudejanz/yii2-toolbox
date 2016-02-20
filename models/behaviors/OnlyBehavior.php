@@ -9,8 +9,8 @@ use yii\db\ActiveRecord;
  * @author Janz
  *
  */
-class HomePageBehavior extends Behavior {
-
+class OnlyBehavior extends Behavior {
+    public $field='home_page';
     public function events() {
         return [
             ActiveRecord::EVENT_AFTER_INSERT => 'afterSave',
@@ -23,8 +23,8 @@ class HomePageBehavior extends Behavior {
     public function afterSave($event) {
         $model = $this->owner;
         /* @var $model ActiveRecord */
-        if($model->home_page){
-            $model->updateAll(['home_page'=>null],['not in','id',[$model->id]]);
+        if($model->{$this->field}){
+            $model->updateAll([$this->field=>null],['not in','id',[$model->id]]);
         }
     }
 
