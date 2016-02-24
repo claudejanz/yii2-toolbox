@@ -4,7 +4,6 @@ namespace claudejanz\toolbox\models\behaviors;
 
 use Yii;
 use yii\base\Behavior;
-use yii\base\Exception;
 use yii\base\InvalidConfigException;
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
@@ -126,24 +125,24 @@ class MultilingualBehavior extends Behavior {
             /* @var $model ActiveRecord */
             $model = $this->owner;
             if (!$this->languages || !is_array($this->languages)) {
-                throw new Exception(Yii::t('ml', 'Please specify array of available languages for the {behavior} in the {owner} or in the application parameters', ['behavior' => get_class($this), 'owner' => get_class($model)]));
+                throw new InvalidConfigException(Yii::t('claudejanz', 'Please specify array of available languages for the {behavior} in the {owner} or in the application parameters', ['behavior' => get_class($this), 'owner' => get_class($model)]));
             } elseif (array_values($this->languages) !== $this->languages) { //associative array
                 $this->languages = array_unique(array_values($this->languages));
             }
 
             if (!$this->attributes) {
-                throw new Exception(Yii::t('ml', 'Please specify multilingual attributes for the {behavior} in the {owner}', ['behavior' => get_class($this), 'owner' => get_class($model)]));
+                throw new InvalidConfigException(Yii::t('claudejanz', 'Please specify multilingual attributes for the {behavior} in the {owner}', ['behavior' => get_class($this), 'owner' => get_class($model)]));
             }
 
             if (!$this->langClassName) {
-                throw new Exception(Yii::t('ml', 'Please specify multilingual langClassName for the {behavior} in the {owner}', ['behavior' => get_class($this), 'owner' => get_class($model)]));
+                throw new InvalidConfigException(Yii::t('claudejanz', 'Please specify multilingual langClassName for the {behavior} in the {owner}', ['behavior' => get_class($this), 'owner' => get_class($model)]));
             }
             if (!isset($this->langForeignKey)) {
-                throw new Exception(Yii::t('ml', 'Please specify langForeignKey for the {behavior} in the {owner}', ['behavior' => get_class($this), 'owner' => get_class($model)]));
+                throw new InvalidConfigException(Yii::t('claudejanz', 'Please specify langForeignKey for the {behavior} in the {owner}', ['behavior' => get_class($this), 'owner' => get_class($model)]));
             }
 
             if (null !== $model->getPrimaryKey()) {
-                throw new InvalidConfigException(Yii::t('ml', '{owner} must have a primary key.', [ 'owner' => get_class($model)]));
+                throw new InvalidConfigException(Yii::t('claudejanz', '{owner} must have a primary key.', [ 'owner' => get_class($model)]));
             }
 
             if (!$this->defaultLanguage) {

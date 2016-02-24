@@ -26,12 +26,12 @@ class CssClassBehavior extends Behavior {
      */
     public static function getClassCssTextOptions() {
         return array(
-            self::CLASSCSS_DEFAULT => Yii::t('core', 'Default'),
-            self::CLASSCSS_PRIMARY => Yii::t('core', 'Primary'),
-            self::CLASSCSS_SUCCESS => Yii::t('core', 'Success'),
-            self::CLASSCSS_INFO => Yii::t('core', 'Info'),
-            self::CLASSCSS_WARNING => Yii::t('core', 'Warning'),
-            self::CLASSCSS_DANGER => Yii::t('core', 'Danger'),
+            self::CLASSCSS_DEFAULT => Yii::t('claudejanz', 'Default'),
+            self::CLASSCSS_PRIMARY => Yii::t('claudejanz', 'Primary'),
+            self::CLASSCSS_SUCCESS => Yii::t('claudejanz', 'Success'),
+            self::CLASSCSS_INFO => Yii::t('claudejanz', 'Info'),
+            self::CLASSCSS_WARNING => Yii::t('claudejanz', 'Warning'),
+            self::CLASSCSS_DANGER => Yii::t('claudejanz', 'Danger'),
         );
     }
     /**

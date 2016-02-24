@@ -28,7 +28,7 @@ class BooleanWidget extends InputWidget {
         echo Html::activeHiddenInput($this->model, $this->attribute);
 
         echo Html::beginTag('div', ['id' => $wid . '-buttons', 'class' => 'input-group btn-group']);
-        $items = [1=>Yii::t('app','Yes'),0=>Yii::t('app','No')];
+        $items = [1=>Yii::t('claudejanz','Yes'),0=>Yii::t('claudejanz','No')];
         $colors =  ['btn-danger','btn-primary'];
         foreach ($items as $key => $item) {
             echo Html::button($item, ['data' => ['value' => $key], 'class' => ($key == $this->model->{$this->attribute} ? 'btn '.$colors[$key].' active' : 'btn btn-default')]);

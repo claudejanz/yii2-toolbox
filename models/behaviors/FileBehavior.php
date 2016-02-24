@@ -291,7 +291,7 @@ class FileBehavior extends Behavior
         }
         /* if still no fileNameAttributes throw an error */
         if(!isset($this->fileNameAttributes)) {
-            throw new InvalidConfigException(Yii::t('app', 'The "fileNameAttributes" must be set. No file validation rules() found in your model. like: [[\'image\',\'image2\'], \'file\', \'extensions\' => \'jpg\'] or set it manually for "{behavior}"', ['behavior' => __CLASS__]));
+            throw new InvalidConfigException(Yii::t('claudejanz', 'The "fileNameAttributes" must be set. No file validation rules() found in your model. like: [[\'image\',\'image2\'], \'file\', \'extensions\' => \'jpg\'] or set it manually for "{behavior}"', ['behavior' => __CLASS__]));
         }
 
         /* if $this->paths is string cast as array */
@@ -313,14 +313,14 @@ class FileBehavior extends Behavior
             /* set foreach $this->fileNameAttributes a skipOnEmpty */
             if(!isset($this->skipOnEmpty[$value])) {
                 if(!isset($this->skipOnEmpty[0])) {
-                    throw new InvalidConfigException(Yii::t('app', 'Missing "skipOnEmpty" for "{item}" in {behavior} and no default "skipOnEmpty" is set.', ['item' => $value, 'behavior' => __CLASS__]));
+                    throw new InvalidConfigException(Yii::t('claudejanz', 'Missing "skipOnEmpty" for "{item}" in {behavior} and no default "skipOnEmpty" is set.', ['item' => $value, 'behavior' => __CLASS__]));
                 }
                 $this->skipOnEmpty[$value] = $this->skipOnEmpty[0];
             }
             /* set foreach $this->fileNameAttributes a returnFullPath */
             if(!isset($this->returnFullPath[$value])) {
                 if(!isset($this->returnFullPath[0])) {
-                    throw new InvalidConfigException(Yii::t('app', 'Missing "returnFullPath" for "{item}" in {behavior} and no default "returnFullPath" is set.', ['item' => $value, 'behavior' => __CLASS__]));
+                    throw new InvalidConfigException(Yii::t('claudejanz', 'Missing "returnFullPath" for "{item}" in {behavior} and no default "returnFullPath" is set.', ['item' => $value, 'behavior' => __CLASS__]));
                 }
                 $this->returnFullPath[$value] = $this->returnFullPath[0];
             }
@@ -335,7 +335,7 @@ class FileBehavior extends Behavior
                  * returns '@webroot/images/'
                  */
                 if(!isset($this->paths[0])) {
-                    throw new InvalidConfigException(Yii::t('app', 'Missing path for "{item}" in {behavior} and no default path is set.', ['item' => $value, 'behavior' => __CLASS__]));
+                    throw new InvalidConfigException(Yii::t('claudejanz', 'Missing path for "{item}" in {behavior} and no default path is set.', ['item' => $value, 'behavior' => __CLASS__]));
                     /*
                      * for $value -> image 
                      * $paths -> ['thumbnail'=>'@webroot/thumb/','@webroot/default/']

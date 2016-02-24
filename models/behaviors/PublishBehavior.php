@@ -24,10 +24,10 @@ class PublishBehavior extends Behavior {
      */
     public static function getPublishedOptions() {
         return array(
-            self::PUBLISHED_DRAFT => Yii::t('core', 'Draft'),
-            self::PUBLISHED_VALIDATED => Yii::t('core', 'Validate'),
-            self::PUBLISHED_ACTIF => Yii::t('core', 'Actif'),
-            self::PUBLISHED_DELETED => Yii::t('core', 'Archived'),
+            self::PUBLISHED_DRAFT => Yii::t('claudejanz', 'Draft'),
+            self::PUBLISHED_VALIDATED => Yii::t('claudejanz', 'Validate'),
+            self::PUBLISHED_ACTIF => Yii::t('claudejanz', 'Actif'),
+            self::PUBLISHED_DELETED => Yii::t('claudejanz', 'Archived'),
         );
     }
     public static function getPublishedColors() {

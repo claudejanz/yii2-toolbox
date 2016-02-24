@@ -17,8 +17,8 @@ class OnlyBehavior extends Behavior
 
     public function init()
     {
-        if(!isset($this->field))throw new InvalidConfigException(Yii::t('app','the "{name}" must be set for "{class}".',['name'=>'field','class'=>__CLASS__]));
-        if(!is_array($this->sameFields))throw new InvalidConfigException(Yii::t('app','the "{name}" must be an array for "{class}".',['name'=>'field','class'=>__CLASS__]));
+        if(!isset($this->field))throw new InvalidConfigException(Yii::t('claudejanz','the "{name}" must be set for "{class}".',['name'=>'field','class'=>__CLASS__]));
+        if(!is_array($this->sameFields))throw new InvalidConfigException(Yii::t('claudejanz','the "{name}" must be an array for "{class}".',['name'=>'field','class'=>__CLASS__]));
     }
 
     public function events()
