@@ -108,6 +108,7 @@ class RbacController extends Controller {
         // as well as the permissions of the "editor" role
         $publisher = $auth->createRole('publisher');
         $auth->add($publisher);
+        $auth->addChild($publisher, $update);
         $auth->addChild($publisher, $publish);
         $auth->addChild($publisher, $editor);
         Console::updateProgress($i++, $total);
@@ -117,7 +118,6 @@ class RbacController extends Controller {
         // as well as the permissions of the "publisher" role
         $admin = $auth->createRole('admin');
         $auth->add($admin);
-        $auth->addChild($admin, $update);
         $auth->addChild($admin, $delete);
         $auth->addChild($admin, $publisher);
         Console::updateProgress($i++, $total);
