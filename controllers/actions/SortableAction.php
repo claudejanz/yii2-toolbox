@@ -47,7 +47,7 @@ class SortableAction extends Action {
         }
 
         // Echo status message for the update
-        echo Html::tag('div',Yii::t('claudejanz', "Order Updated on {date} !",['date'=>Yii::$app->formatter->asDatetime()]),['class'=>'alert alert-success']);
+        echo Html::tag('div',Yii::t('claudejanz', "Order Updated on {date}",['date'=>Yii::$app->formatter->asDatetime(time())]),['class'=>'alert alert-success']);
     }
 
     public function parseJsonArray($jsonArray, $parentID = null) {
