@@ -16,26 +16,25 @@ $(function () {
         //the if else are intentionally separated instead of put into a function to get the 
         //button since it is using a class not an #id so there are many of them and we need
         //to ensure we get the right button and content. 
-        $.ajaxSetup({dataType: 'json'});
-        var modal = $('#modal');
+        var modal = $('#cjModal');
         if (!modal.data('bs.modal').isShown) {
             modal.modal('show');
         }
         modal.data('target',$(this));
-        var jqxhr = $.ajax($(this).data('url'))
+        var jqxhr = $.ajax($(this).data('url'),{dataType: 'json'})
                 .done(function (data) {
 //                    alert("success");
-                    modal.find('#modalContent').html(data);
+                    modal.find('#cjModalContent').html(data);
                 })
                 .fail(function (data) {
 //                    alert("error");
-                    $('#modalContent').html(data.responseJSON.message);
+                    $('#cjModalContent').html(data);
                 })
                 .always(function () {
 //                    alert("complete");
                 });
         //dynamiclly set the header for the modal
-        $('#modalHeaderTitle').html('<h4>' + $(this).data('title') + '</h4>');
+        $('#cjModalHeaderTitle').html('<h4>' + $(this).data('title') + '</h4>');
 
     });
 });

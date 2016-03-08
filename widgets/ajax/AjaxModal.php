@@ -30,14 +30,14 @@ class AjaxModal extends Modal
     public static function widget($config = [])
     {
         $config = array_merge([
-            'header'=> '<span id="modalHeaderTitle"></span>',
-            'headerOptions' => ['id' => 'modalHeader'],
-            'id' => 'modal',
+            'header'=> '<span id="cjModalHeaderTitle"></span>',
+            'headerOptions' => ['id' => 'cjModalHeader'],
+            'id' => 'cjModal',
             'size' => 'modal-lg',
             //keeps from closing modal with esc key or by clicking out of the modal.
             // user must click cancel or X to close
             'clientOptions' => ['backdrop' => 'static', 'keyboard' => FALSE],
-            'clientEvents' => ['hidden.bs.modal' => new JsExpression('function(){$(\'#modalContent\').html(\'<i class="fa fa-refresh fa-spin"></i>\');}')]
+            'clientEvents' => ['hidden.bs.modal' => new JsExpression('function(){$(\'#cjModalContent\').html(\'<i class="fa fa-refresh fa-spin"></i>\');}')]
                 ], $config);
         return parent::widget($config);
 
@@ -52,7 +52,7 @@ class AjaxModal extends Modal
     public function run()
     {
         Icon::map($this->view,Icon::FA);
-        echo "<div id='modalContent'>".Icon::show('refresh fa-spin', [], Icon::FA)."</div>";
+        echo "<div id='cjModalContent'>".Icon::show('refresh fa-spin', [], Icon::FA)."</div>";
 //        echo "".Icon::show('refresh fa-spin', [], Icon::FA)."";
         parent::run();
     }

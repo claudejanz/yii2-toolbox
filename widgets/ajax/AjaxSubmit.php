@@ -82,13 +82,13 @@ class AjaxSubmit extends Widget
         $this->ajaxOptions = Json::encode($this->ajaxOptions);
         $view->registerJs("$('#" . $this->options['id'] . "').click(function() {
                 $.ajax($this->ajaxOptions).done(function (data) {
-                    $('#modal').modal('hide');
-                    if($('#modal').data('target').data('success')){
-                        $.pjax.reload($($('#modal').data('target').data('success')),{timeout:false});
+                    $('#cjModal').modal('hide');
+                    if($('#cjModal').data('target').data('success')){
+                        $.pjax.reload($($('#cjModal').data('target').data('success')),{timeout:false});
                     }
                 })
                 .fail(function (data) {
-                    $('#modalContent').html(data.responseJSON.message);
+                    $('#cjModalContent').html(data.responseJSON.message);
                 })
                
                 return false;
