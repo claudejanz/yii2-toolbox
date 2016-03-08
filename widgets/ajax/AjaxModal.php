@@ -9,7 +9,9 @@
 namespace claudejanz\toolbox\widgets\ajax;
 
 use claudejanz\toolbox\widgets\ajax\ajaxModal\AjaxModalAsset;
+use kartik\icons\Icon;
 use yii\bootstrap\Modal;
+use yii\web\JsExpression;
 
 /**
  * Description of AjaxModal
@@ -34,7 +36,8 @@ class AjaxModal extends Modal
             'size' => 'modal-lg',
             //keeps from closing modal with esc key or by clicking out of the modal.
             // user must click cancel or X to close
-            'clientOptions' => ['backdrop' => 'static', 'keyboard' => FALSE]
+            'clientOptions' => ['backdrop' => 'static', 'keyboard' => FALSE],
+            'clientEvents' => ['hidden.bs.modal' => new JsExpression('function(){$(\'#modalContent\').html(\'<i class="fa fa-refresh fa-spin"></i>\');}')]
                 ], $config);
         return parent::widget($config);
 
@@ -48,7 +51,9 @@ class AjaxModal extends Modal
 
     public function run()
     {
-        echo "<div id='modalContent'></div>";
+        Icon::map($this->view,Icon::FA);
+        echo "<div id='modalContent'>".Icon::show('refresh fa-spin', [], Icon::FA)."</div>";
+//        echo "".Icon::show('refresh fa-spin', [], Icon::FA)."";
         parent::run();
     }
 
