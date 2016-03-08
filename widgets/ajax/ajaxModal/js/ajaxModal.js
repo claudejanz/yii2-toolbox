@@ -35,7 +35,7 @@ $(function () {
 //                    alert("complete");
                 });
         //dynamiclly set the header for the modal
-        $('#modalHeaderTitle').html('<h4>' + $(this).attr('title') + '</h4>');
+        $('#modalHeaderTitle').html('<h4>' + $(this).data('title') + '</h4>');
 
     });
 });

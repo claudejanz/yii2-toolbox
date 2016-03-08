@@ -17,15 +17,20 @@ In view:
 
 Pjax::begin(['id' => 'training' . $model->id, 'timeout' => false]);
 echo $model->title;
-echo Html::button(Icon::show('pencil'), [
-    'title' => Yii::t('app', 'Edit training: {title}', ['title' => $model->title]), 'class' => 'showModal red',
-    'data-url' => Url::to([
-        'users/planning-update',
-        'id' => $user->id,
-        'training_id' => $model->id
-    ]),
-    'data-success' => '#training' . $model->id,
-]);
+echo AjaxButton::widget([
+        'label' => Icon::show('pencil'),
+        'encodeLabel' => false,
+        'url' => [
+            'users/planning-update',
+            'id' => $user->id,
+            'training_id' => $model->id
+        ],
+        'title' => Yii::t('app', 'Edit training: {title}', ['title' => $model->title]),
+        'success' => '#training' . $model->id,
+        'options' => [
+            'class' => 'red',
+        ],
+    ]);
 }
 
 Pjax::end();
