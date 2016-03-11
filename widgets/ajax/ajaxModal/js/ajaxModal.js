@@ -27,8 +27,13 @@ $(function () {
                     modal.find('#cjModalContent').html(data);
                 })
                 .fail(function (data) {
-//                    alert("error");
-                    $('#cjModalContent').html(data);
+                   if(data.responseJSON){
+                        alert(data.responseJSON.message);
+                    }else if(data.responseText){
+                        alert(data.responseText);
+                    }else{
+                        console.log(data);
+                    }
                 })
                 .always(function () {
 //                    alert("complete");

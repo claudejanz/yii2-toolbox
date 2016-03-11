@@ -28,5 +28,5 @@ class AjaxModalAsset extends AssetBundle
         'yii\bootstrap\BootstrapAsset',
     ];
     
-    public $publishOptions=['forceCopy'=>true];
+//    public $publishOptions=['forceCopy'=>true];
 }
