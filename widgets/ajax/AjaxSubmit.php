@@ -83,6 +83,9 @@ class AjaxSubmit extends Widget
         $view->registerJs("$('#" . $this->options['id'] . "').click(function() {
                 $.ajax($this->ajaxOptions).done(function (data) {
                     $('#cjModal').modal('hide');
+                    if (data.message) {
+                        alert(data.message);
+                    }
                     if($('#cjModal').data('target').data('success')){
                         $.pjax.reload($($('#cjModal').data('target').data('success')),{timeout:false});
                     }

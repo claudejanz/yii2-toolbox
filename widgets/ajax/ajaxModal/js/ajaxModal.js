@@ -20,18 +20,26 @@ $(function () {
         if (!modal.data('bs.modal').isShown) {
             modal.modal('show');
         }
-        modal.data('target',$(this));
-        var jqxhr = $.ajax($(this).data('url'),{dataType: 'json'})
+        modal.data('target', $(this));
+        var jqxhr = $.ajax($(this).data('url'), {dataType: 'json'})
                 .done(function (data) {
-//                    alert("success");
-                    modal.find('#cjModalContent').html(data);
+                    if (data.error == 1) {
+                        modal.modal('hide');
+                        alert(data.message);
+                    } else {
+                        if (data.message) {
+                            alert(data.message);
+                        }
+                        modal.find('#cjModalContent').html(data);
+                    }
+
                 })
                 .fail(function (data) {
-                   if(data.responseJSON){
+                    if (data.responseJSON) {
                         alert(data.responseJSON.message);
-                    }else if(data.responseText){
+                    } else if (data.responseText) {
                         alert(data.responseText);
-                    }else{
+                    } else {
                         console.log(data);
                     }
                 })

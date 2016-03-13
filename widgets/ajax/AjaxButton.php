@@ -97,7 +97,10 @@ class AjaxButton extends Widget
                     if(data.error == 1){
                         alert(data.message);
                     }else{
-                    " . (($this->success) ? "$.pjax.reload('$this->success',{timeout:false});" : 'alert(data);') . "
+                        if(data.message){
+                            alert(data.message);
+                        }
+                        " . (($this->success) ? "$.pjax.reload('$this->success',{timeout:false});" : 'alert(data);') . "
                     }
                 })
                 .fail(function (data) {
