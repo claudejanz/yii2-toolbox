@@ -37,6 +37,23 @@ class AjaxSubmit extends Widget
     public $encodeLabel = true;
 
     /**
+     * @var boolean whether the label should be HTML-encoded.
+     */
+    public $useFormData = true;
+
+    /**
+     * the javascript function to be executed on done
+     * @var JsExpression
+     */
+    private $done;
+
+    /**
+     * the javascript function to be executed on fail
+     * @var JsExpression
+     */
+    private $fail;
+
+    /**
      * Initializes the widget.
      */
     public function init()
@@ -66,22 +83,28 @@ class AjaxSubmit extends Widget
         $view = $this->getView();
 
         if (!isset($this->ajaxOptions['type'])) {
-            $this->ajaxOptions['type'] = new JsExpression('$(this).parents("form").attr("method")');
+            $this->ajaxOptions['type'] = new JsExpression('$(this).closest("form").attr("method")');
         }
 
         if (!isset($this->ajaxOptions['url'])) {
-            $this->ajaxOptions['url'] = new JsExpression('$(this).parents("form").attr("action")');
+            $this->ajaxOptions['url'] = new JsExpression('$(this).closest("form").attr("action")');
         }
 
         if (!isset($this->ajaxOptions['data']) && isset($this->ajaxOptions['type']))
-            $this->ajaxOptions['data'] = new JsExpression('$(this).parents("form").serialize()');
+//            $this->ajaxOptions['data'] = new JsExpression('$(this).closest("form").serialize()');
+            $this->ajaxOptions['data'] = new JsExpression('new FormData($(this).closest("form")[0])');
 
-//        if (!isset($this->ajaxOptions['always']))
-//            $this->ajaxOptions['always'] = new JsExpression('function(){console.log("coucou");}');
-
-        $this->ajaxOptions = Json::encode($this->ajaxOptions);
-        $view->registerJs("$('#" . $this->options['id'] . "').click(function() {
-                $.ajax($this->ajaxOptions).done(function (data) {
+        if ($this->useFormData) {
+            if (!isset($this->ajaxOptions['data']))
+                $this->ajaxOptions['data'] = new JsExpression('new FormData($(this).closest("form")[0])');
+            $this->ajaxOptions['processData'] = new JsExpression('false');
+            $this->ajaxOptions['contentType'] = new JsExpression('false');
+        } else {
+            if (!isset($this->ajaxOptions['data']))
+                $this->ajaxOptions['data'] = new JsExpression('$(this).closest("form").serialize()');
+        }
+        if (!isset($this->done))
+            $this->done = new JsExpression("function (data) {
                     $('#cjModal').modal('hide');
                     if (data.message) {
                         alert(data.message);
@@ -89,11 +112,13 @@ class AjaxSubmit extends Widget
                     if($('#cjModal').data('target').data('success')){
                         $.pjax.reload($($('#cjModal').data('target').data('success')),{timeout:false});
                     }
-                })
-                .fail(function (data) {
-                    $('#cjModalContent').html(data.responseJSON.message);
-                })
-               
+                }");
+        if (!isset($this->fail))
+            $this->fail = new JsExpression("function (data) { $('#cjModalContent').html(data.responseJSON.message);}");
+
+        $this->ajaxOptions = Json::encode($this->ajaxOptions);
+        $view->registerJs("$('#" . $this->options['id'] . "').click(function() {
+                $.ajax($this->ajaxOptions).done($this->done).fail($this->fail);
                 return false;
             });");
     }
