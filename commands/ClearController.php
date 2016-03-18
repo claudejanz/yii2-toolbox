@@ -35,20 +35,20 @@ class ClearController extends Controller
             '@app/runtime/debug',
             '@app/runtime/logs'
         ];
-        $sep = '----------------------------------------------' . "\n";
+        $sep = '----------------------------------------------' . PHP_EOL;
         $message = $sep;
-        $message .= 'What do you want to clear?' . "\n";
+        $message .= 'What do you want to clear?' . PHP_EOL;
         $valids = [];
         $key = 0;
         foreach ($assets as $key => $value) {
             $message.= $this->ansiFormat($key, Console::FG_GREY)
                     . $this->ansiFormat(' => ', Console::FG_GREEN)
-                    . $this->ansiFormat($value, Console::FG_YELLOW) . "\n";
+                    . $this->ansiFormat($value, Console::FG_YELLOW) . PHP_EOL;
             $valids[] = $key;
         }
         $message.= $this->ansiFormat('all', Console::FG_GREY)
-                    . $this->ansiFormat(' => ', Console::FG_GREEN)
-                    . $this->ansiFormat('all', Console::FG_YELLOW) . "\n";
+                . $this->ansiFormat(' => ', Console::FG_GREEN)
+                . $this->ansiFormat('all', Console::FG_YELLOW) . PHP_EOL;
         $message .= $sep;
         $error = $this->ansiFormat('Not valid input', Console::FG_RED);
         $pattern = '@^((' . implode('|', $valids) . '|all),?)+$@';
@@ -84,8 +84,8 @@ class ClearController extends Controller
             $uri = Yii::getAlias($asset);
             FileHelper::removeDirectory($uri);
             FileHelper::createDirectory($uri);
-            Console::updateProgress($key+1, $len);
-            $message .= 'cleared: ' . $this->ansiFormat($uri, Console::FG_GREEN) . "\n";
+            Console::updateProgress($key + 1, $len);
+            $message .= 'cleared: ' . $this->ansiFormat($uri, Console::FG_GREEN) . PHP_EOL;
         }
         Console::endProgress("done." . PHP_EOL);
         echo $message;
