@@ -32,5 +32,8 @@ class User extends Component implements IdentityInterface{
     public static function findIdentityByAccessToken($token, $type = null) {
         
     }
+    public function can($rule){
+        return true;
+    }
 
 }
