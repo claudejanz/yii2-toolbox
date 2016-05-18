@@ -12,6 +12,10 @@ use yii\db\ActiveRecord;
  */
 class PublishBehavior extends Behavior
 {
+    const PUBLISHED_DRAFT = 1;
+    const PUBLISHED_VALIDATED = 2;
+    const PUBLISHED_ACTIF = 3;
+    const PUBLISHED_DELETED = 4;
 
     public $field = 'published';
     public $value = self::PUBLISHED_ACTIF;
@@ -30,10 +34,6 @@ class PublishBehavior extends Behavior
             $model->{$this->field} = $this->value;
     }
 
-    const PUBLISHED_DRAFT = 1;
-    const PUBLISHED_VALIDATED = 2;
-    const PUBLISHED_ACTIF = 3;
-    const PUBLISHED_DELETED = 4;
 
     /**
      * @return array published names indexed by published IDs
