@@ -45,6 +45,11 @@ class AjaxButton extends Widget
      * @var string selector for update pjax
      */
     public $success;
+    
+    /**
+     * @var string to use for javascript confirm()
+     */
+    public $confirm = null;
 
     /**
      * Initializes the widget.
@@ -92,7 +97,10 @@ class AjaxButton extends Widget
         }
 
         $this->ajaxOptions = Json::encode($this->ajaxOptions);
+        $confirmBegin = ($this->confirm)?"if(confirm('$this->confirm')){":'';
+        $confirmEnd = ($this->confirm)?"}":'';
         $view->registerJs("$('#" . $this->options['id'] . "').click(function() {
+            $confirmBegin
                 $.ajax($this->ajaxOptions).done(function (data) {
                     if(data.error == 1){
                         alert(data.message);
@@ -112,7 +120,7 @@ class AjaxButton extends Widget
                         console.log(data);
                     }
                 })
-               
+            $confirmEnd   
                 return false;
             });");
     }
