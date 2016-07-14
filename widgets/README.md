@@ -37,13 +37,16 @@ BootstrapPortlet
 
 Creates a bootstrap portlet around someting. 
 
-        create an alert.
+-create an alert.
 
 ```php
-Yii::$app->session->setFlash(\kartik\widgets\Alert::TYPE_INFO,Yii::t('app', 'Thanks for contacting us. We will respond shortly.'));
+Yii::$app->session->setFlash(
+    \kartik\widgets\Alert::TYPE_INFO,
+    Yii::t('app', 'Thanks for contacting us. We will respond shortly.')
+);
 ```
 
-        put this in your main and it will display the message in a nice box in the right color.
+-put this in your main and it will display the message in a nice box in the right color.
 
 ```php
 echo Alerts::widget();
