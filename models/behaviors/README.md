@@ -1,7 +1,7 @@
 Usages
 ======
 
-MultilingualBehavior,PublishBehavior,OnlyBehavior,FileBehavior,AutoSlugBehavior
+MultilingualBehavior, PublishBehavior, OnlyBehavior, FileBehavior, AutoSlugBehavior
 ----------
 
 Widgets for inputs

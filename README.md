@@ -11,7 +11,7 @@ Features
  - Display Widgets: [MySortable, BootstrapPortlet, Alerts](widgets/)
  - Input Widgets: [PublishWidget, BooleanWidget, CssClassWidget](widgets/inputs/)
  - Ajax Modal with Pjax refresh Widgets: [AjaxButton,AjaxModal,AjaxModalButton,AjaxSubmit](widgets/ajax/)
- - Model Behaviors: [MultilingualBehavior,PublishBehavior,OnlyBehavior,FileBehavior,AutoSlugBehavior](models/behaviors/)
+ - Model Behaviors: [MultilingualBehavior, PublishBehavior, OnlyBehavior, FileBehavior, AutoSlugBehavior](models/behaviors/)
 
 Installation
 ------------
