@@ -29,3 +29,4 @@ or add
 
 to the require section of your `composer.json` file.
 
+[widgets](widgets/)
