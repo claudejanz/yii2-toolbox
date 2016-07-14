@@ -10,8 +10,12 @@ Features
 -----
  - Display Widgets: [MySortable, BootstrapPortlet, Alerts](widgets/)
  - Input Widgets: [PublishWidget, BooleanWidget, CssClassWidget](widgets/inputs/)
- - Ajax Modal with Pjax refresh Widgets: [AjaxButton,AjaxModal,AjaxModalButton,AjaxSubmit](widgets/ajax/)
+ - Ajax Modal with Pjax refresh Widgets: [AjaxButton, AjaxModal, AjaxModalButton, AjaxSubmit](widgets/ajax/)
  - Model Behaviors: [MultilingualBehavior, PublishBehavior, OnlyBehavior, FileBehavior, AutoSlugBehavior](models/behaviors/)
+ - Controller Action: [SortableAction](controllers/actions/)
+ - Controller Behaviors: [PageBehavior](controllers/behaviors/)
+ - Components: [Request](components/)
+ - Commands: [ClearController, RbacController](components/)
 
 Installation
 ------------
