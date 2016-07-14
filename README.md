@@ -15,7 +15,7 @@ Features
  - Controller Action: [SortableAction](controllers/actions/)
  - Controller Behaviors: [PageBehavior](controllers/behaviors/)
  - Components: [Request](components/)
- - Commands: [ClearController, RbacController](components/)
+ - Commands: [ClearController, RbacController](commands/)
 
 Installation
 ------------
