@@ -1,15 +1,19 @@
 Usages
 ======
 
-ClearController, RbacController  
+For all  
 ----------
-
-batch commands for cleanup
 
 In console.php config file.
 ```php
 'controllerNamespace' => 'claudejanz\toolbox\commands',
 ```
+
+ClearController  
+----------
+
+batch commands for cleanup
+
 In console
 ```php
 ./yii clean
