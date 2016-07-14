@@ -8,7 +8,7 @@ This is my project toolbox
 
 Features
 -----
-[widgets](widgets/)
+[MySortable, BootstrapPortlet, Alerts](widgets/)
 
 Installation
 ------------
