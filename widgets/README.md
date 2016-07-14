@@ -52,4 +52,4 @@ Yii::$app->session->setFlash(
 ```php
 echo Alerts::widget();
 ```
-[Back to Menu](../#Fearures)
+[Back to Menu](../../#Fearures)
