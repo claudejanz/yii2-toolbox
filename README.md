@@ -8,7 +8,7 @@ This is my project toolbox
 
 Features
 -----
-A lot of elements
+[widgets](widgets/)
 
 Installation
 ------------
@@ -29,4 +29,4 @@ or add
 
 to the require section of your `composer.json` file.
 
-[widgets](widgets/)
+
