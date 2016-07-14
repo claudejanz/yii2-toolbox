@@ -32,10 +32,10 @@ echo 'content';
 BootstrapPortlet::end();
 ```
 
-BootstrapPortlet
+Alerts
 ----------
 
-Creates a bootstrap portlet around someting. 
+Displays alert in bootstarp alert box. 
 
 -create an alert.
 
