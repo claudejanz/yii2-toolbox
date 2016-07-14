@@ -37,7 +37,7 @@ Alerts
 
 Displays alert in bootstarp alert box. 
 
--create an alert.
+ - create an alert.
 
 ```php
 Yii::$app->session->setFlash(
@@ -47,7 +47,7 @@ Yii::$app->session->setFlash(
 ```
 
 
--put this in your main and it will display the message in a nice box in the right color.
+ - put this in your main and it will display the message in a nice box in the right color.
 
 ```php
 echo Alerts::widget();
