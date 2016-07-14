@@ -12,7 +12,7 @@ In console.php config file.
 ClearController  
 ----------
 
-batch commands for cleanup
+batch command for cleanup
 
 In console
 ```php
@@ -22,7 +22,7 @@ In console
 RbacController  
 ----------
 
-creates rbac inputs
+batch command to creates rbac inputs
 
 ```php
 ./yii rbac
