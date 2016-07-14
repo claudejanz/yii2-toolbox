@@ -29,14 +29,3 @@ or add
 
 to the require section of your `composer.json` file.
 
-
-Usage
------
-```php
-echo MySortable::widget([
-        'options'  => ['id' => 'pages-images-order'],
-        'items'    => $models,
-        'url'      => ['pages/save-page-images-order', 'id' => Yii::$app->request->queryParams['id']],
-        'itemView' => '/page-images/orderView',
-    ]);
-```
