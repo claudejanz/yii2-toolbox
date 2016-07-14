@@ -4,7 +4,7 @@ Usages
 MultilingualBehavior, PublishBehavior, OnlyBehavior, FileBehavior, AutoSlugBehavior
 ----------
 
-Widgets for inputs
+Behaviors for models
 
 ```php
 public function behaviors()
