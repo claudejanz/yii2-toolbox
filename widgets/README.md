@@ -46,6 +46,7 @@ Yii::$app->session->setFlash(
 );
 ```
 
+
 -put this in your main and it will display the message in a nice box in the right color.
 
 ```php
