@@ -40,6 +40,10 @@ Pjax::end();
 In form:
 
 ```php
+use kartik\widgets\ActiveForm;
+
+/* @var $form ActiveForm */
+
 $form = ActiveForm::begin(['type'=>ActiveForm::TYPE_VERTICAL]); 
 
 echo Form::widget([
