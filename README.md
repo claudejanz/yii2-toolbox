@@ -8,8 +8,9 @@ This is my project toolbox
 
 Features
 -----
- - Display widgets [MySortable, BootstrapPortlet, Alerts](widgets/)
- - Input Widgets [PublishWidget, BooleanWidget, CssClassWidget](widgets/inputs/)
+ - Display Widgets: [MySortable, BootstrapPortlet, Alerts](widgets/)
+ - Input Widgets: [PublishWidget, BooleanWidget, CssClassWidget](widgets/inputs/)
+ - Ajax Modal with Pjax refresh Widgets: [AjaxButton,AjaxModal,AjaxModalButton,AjaxSubmit](widgets/ajax/)
 
 Installation
 ------------
