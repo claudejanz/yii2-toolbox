@@ -8,7 +8,8 @@ This is my project toolbox
 
 Features
 -----
-[MySortable, BootstrapPortlet, Alerts](widgets/)
+Display widgets [MySortable, BootstrapPortlet, Alerts](widgets/)
+Input Widgets [PublishWidget, BooleanWidget, CssClassWidget](widgets/inputs/)
 
 Installation
 ------------
