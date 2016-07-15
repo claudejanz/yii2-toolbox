@@ -13,7 +13,7 @@
     "require": {
         "yiisoft/yii2-bootstrap": "*",
         "kartik-v/yii2-helpers": "*",
-        "kartik-v/yii2-widget-alert": "*"
+        "kartik-v/yii2-widgets": "*"
     },
     "autoload": {
         "psr-4": {
