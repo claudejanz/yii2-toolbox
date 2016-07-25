@@ -4,7 +4,6 @@ namespace claudejanz\toolbox\models\behaviors;
 
 use yii\base\Behavior;
 use yii\db\ActiveRecord;
-use function mb_strtolower;
 
 /**
  * @author Janz
