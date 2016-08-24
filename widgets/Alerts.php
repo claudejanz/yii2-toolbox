@@ -34,8 +34,6 @@ use yii\bootstrap\Widget;
 class Alerts extends Widget
 {
 
-    
-
     /**
      * @var array the options for rendering the close button tag.
      */
@@ -48,20 +46,23 @@ class Alerts extends Widget
         $session = Yii::$app->getSession();
         $flashes = $session->getAllFlashes();
         $appendCss = isset($this->options['class']) ? ' ' . $this->options['class'] : '';
+        $valid = [Alert::TYPE_INFO, Alert::TYPE_DANGER, Alert::TYPE_SUCCESS, Alert::TYPE_WARNING, Alert::TYPE_PRIMARY, Alert::TYPE_DEFAULT, Alert::TYPE_CUSTOM];
 
         $i = 1;
         foreach ($flashes as $type => $data) {
-            $data = (array) $data;
-            foreach ($data as $message) {
-                echo Alert::widget([
-                    'type' => $type,
-                    'body' => $message,
-                    'delay' => (3000 * $i),
-                ]);
-                $i++;
-            }
+            if (in_array($type, $valid)) {
+                $data = (array) $data;
+                foreach ($data as $message) {
+                    echo Alert::widget([
+                        'type'  => $type,
+                        'body'  => $message,
+                        'delay' => (3000 * $i),
+                    ]);
+                    $i++;
+                }
 
-            $session->removeFlash($type);
+                $session->removeFlash($type);
+            }
         }
     }
 
