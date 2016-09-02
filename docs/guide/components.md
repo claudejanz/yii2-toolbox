@@ -17,4 +17,4 @@ In web.php config file.
 ],
 ```
 
-[Back to Menu](https://github.com/claudejanz/yii2-toolbox/#features)
+[Back to Menu](guide-README.html/#features)
