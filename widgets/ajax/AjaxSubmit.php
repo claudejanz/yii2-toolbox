@@ -90,19 +90,23 @@ class AjaxSubmit extends Widget
             $this->ajaxOptions['url'] = new JsExpression('$(this).closest("form").attr("action")');
         }
 
-        if (!isset($this->ajaxOptions['data']) && isset($this->ajaxOptions['type']))
-//            $this->ajaxOptions['data'] = new JsExpression('$(this).closest("form").serialize()');
-            $this->ajaxOptions['data'] = new JsExpression('new FormData($(this).closest("form")[0])');
-
-        if ($this->useFormData) {
-            if (!isset($this->ajaxOptions['data']))
-                $this->ajaxOptions['data'] = new JsExpression('new FormData($(this).closest("form")[0])');
-            $this->ajaxOptions['processData'] = new JsExpression('false');
-            $this->ajaxOptions['contentType'] = new JsExpression('false');
-        } else {
-            if (!isset($this->ajaxOptions['data']))
-                $this->ajaxOptions['data'] = new JsExpression('$(this).closest("form").serialize()');
+        if (!isset($this->ajaxOptions['data']) && isset($this->ajaxOptions['type'])) {
+            if (!isset($this->ajaxOptions['data'])) {
+                if ($this->useFormData) {
+                    if (isset($this->options['name']) && isset($this->options['value'])) {
+                        
+                        $this->ajaxOptions['data'] = new JsExpression('(new FormData($(this).closest("form")[0])).append("'.$this->options['name'].'","'.$this->options['value'].'")');
+                    } else {
+                        $this->ajaxOptions['data'] = new JsExpression('new FormData($(this).closest("form")[0])');
+                    }
+                    $this->ajaxOptions['processData'] = new JsExpression('false');
+                    $this->ajaxOptions['contentType'] = new JsExpression('false');
+                } else {
+                    $this->ajaxOptions['data'] = new JsExpression('$(this).closest("form").serialize()');
+                }
+            }
         }
+
         if (!isset($this->done))
             $this->done = new JsExpression("function (data) {
                     $('#cjModal').modal('hide');
