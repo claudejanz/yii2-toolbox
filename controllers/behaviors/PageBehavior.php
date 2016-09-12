@@ -92,9 +92,11 @@ class PageBehavior extends Behavior {
                 $this->_page = $this->autoCreatePage(null, false);
             }
         }
-        $this->owner->layout = $this->_page->layout->path;
+        $this->owner->layout = $this->_page->layout->fullPath;
         return $this->_page;
     }
+    
+   
 
     public function autoCreatePage($serialized_params = null, $saveIt = true) {
         $page = new Page;
