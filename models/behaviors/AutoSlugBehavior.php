@@ -9,7 +9,8 @@ use yii\db\ActiveRecord;
  * @author Janz
  *
  */
-class AutoSlugBehavior extends Behavior {
+class AutoSlugBehavior extends Behavior
+{
 
     public $slugField = 'slug';
     public $fieldToSlug = 'title';
@@ -23,7 +24,9 @@ class AutoSlugBehavior extends Behavior {
 
     public function beforeValidate($event) {
         $model = $this->owner;
-        $model->{$this->slugField} = $this->toUrl($model->{$this->fieldToSlug});
+        if (empty($model->{$this->slugField})) {
+            $model->{$this->slugField} = $this->toUrl($model->{$this->fieldToSlug});
+        }
     }
 
     private function toUrl($str) {
