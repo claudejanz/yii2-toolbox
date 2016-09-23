@@ -45,13 +45,13 @@ class AjaxSubmit extends Widget
      * the javascript function to be executed on done
      * @var JsExpression
      */
-    private $done;
+    public $done;
 
     /**
      * the javascript function to be executed on fail
      * @var JsExpression
      */
-    private $fail;
+    public $fail;
 
     /**
      * Initializes the widget.
