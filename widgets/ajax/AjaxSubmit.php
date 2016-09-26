@@ -52,6 +52,7 @@ class AjaxSubmit extends Widget
      * @var JsExpression
      */
     public $fail;
+    public $addcode;
 
     /**
      * Initializes the widget.
@@ -85,9 +86,11 @@ class AjaxSubmit extends Widget
         if (!isset($this->ajaxOptions['type'])) {
             $this->ajaxOptions['type'] = new JsExpression('$(this).closest("form").attr("method")');
         }
-
         if (!isset($this->ajaxOptions['url'])) {
             $this->ajaxOptions['url'] = new JsExpression('$(this).closest("form").attr("action")');
+        }
+        if (!isset($this->ajaxOptions['dataType'])) {
+            $this->ajaxOptions['dataType'] = 'json';
         }
 
         if (!isset($this->ajaxOptions['data']) && isset($this->ajaxOptions['type'])) {
@@ -95,11 +98,17 @@ class AjaxSubmit extends Widget
                 if ($this->useFormData) {
                     if (isset($this->options['name']) && isset($this->options['value'])) {
                         
-                        $this->ajaxOptions['data'] = new JsExpression('(new FormData($(this).closest("form")[0])).append("'.$this->options['name'].'","'.$this->options['value'].'")');
+                        $this->addcode = new JsExpression('
+                            var d = new FormData($(this).closest("form")[0]);
+                            d.append("'.$this->options['name'].'","'.$this->options['value'].'");
+                            ');
+//                        $this->ajaxOptions['data'] = new JsExpression('((new FormData($(this).closest("form")[0])).append("'.$this->options['name'].'","'.$this->options['value'].'"))');
+                        $this->ajaxOptions['data'] = new JsExpression('d');
+                    $this->ajaxOptions['processData'] = new JsExpression('false');
                     } else {
                         $this->ajaxOptions['data'] = new JsExpression('new FormData($(this).closest("form")[0])');
-                    }
                     $this->ajaxOptions['processData'] = new JsExpression('false');
+                    }
                     $this->ajaxOptions['contentType'] = new JsExpression('false');
                 } else {
                     $this->ajaxOptions['data'] = new JsExpression('$(this).closest("form").serialize()');
@@ -122,6 +131,7 @@ class AjaxSubmit extends Widget
 
         $this->ajaxOptions = Json::encode($this->ajaxOptions);
         $view->registerJs("$('#" . $this->options['id'] . "').click(function() {
+            $this->addcode
                 $.ajax($this->ajaxOptions).done($this->done).fail($this->fail);
                 return false;
             });");
