@@ -131,7 +131,7 @@ class AjaxSubmit extends Widget
 
         $this->ajaxOptions = Json::encode($this->ajaxOptions);
         $view->registerJs("$('#" . $this->options['id'] . "').click(function() {
-            $this->addcode
+                $this->addcode
                 $.ajax($this->ajaxOptions).done($this->done).fail($this->fail);
                 return false;
             });");

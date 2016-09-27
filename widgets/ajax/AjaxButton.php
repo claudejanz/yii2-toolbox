@@ -2,10 +2,11 @@
 
 namespace claudejanz\toolbox\widgets\ajax;
 
-use yii\base\Widget;
 use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\helpers\Url;
+use yii\jui\Widget;
+use yii\web\JsExpression;
 
 /**
  * AjaxSubmit renders an ajax submit.
@@ -18,7 +19,6 @@ class AjaxButton extends Widget
      * @var array|string the url to execute.
      */
     public $url;
-    
     public $ajaxOptions = [];
 
     /**
@@ -45,11 +45,23 @@ class AjaxButton extends Widget
      * @var string selector for update pjax
      */
     public $success;
-    
+
     /**
      * @var string to use for javascript confirm()
      */
     public $confirm = null;
+    
+     /**
+     * the javascript function to be executed on done
+     * @var JsExpression
+     */
+    public $done;
+
+    /**
+     * the javascript function to be executed on fail
+     * @var JsExpression
+     */
+    public $fail;
 
     /**
      * Initializes the widget.
@@ -97,11 +109,14 @@ class AjaxButton extends Widget
         }
 
         $this->ajaxOptions = Json::encode($this->ajaxOptions);
-        $confirmBegin = ($this->confirm)?"if(confirm('$this->confirm')){":'';
-        $confirmEnd = ($this->confirm)?"}":'';
-        $view->registerJs("$('#" . $this->options['id'] . "').click(function() {
-            $confirmBegin
-                $.ajax($this->ajaxOptions).done(function (data) {
+        $confirmBegin = ($this->confirm) ? "if(confirm('$this->confirm')){" : '';
+        $confirmEnd = ($this->confirm) ? "}" : '';
+
+
+
+
+        if (!isset($this->done))
+            $this->done = new JsExpression("function (data) {
                     if(data.error == 1){
                         alert(data.message);
                     }else{
@@ -110,17 +125,26 @@ class AjaxButton extends Widget
                         }
                         " . (($this->success) ? "$.pjax.reload('$this->success',{timeout:false});" : 'alert(data);') . "
                     }
-                })
-                .fail(function (data) {
+                }");
+
+        if (!isset($this->fail))
+            $this->fail = new JsExpression("function (data) {
                     if(data.responseJSON){
-                        alert(data.responseJSON.message);
+                        " . (($this->success) ? "$('$this->success').html(data.responseJSON.message);" : "alert(data.responseJSON.message);") . "
                     }else if(data.responseText){
                         alert(data.responseText);
                     }else{
                         console.log(data);
                     }
-                })
-            $confirmEnd   
+                }");
+        
+        
+        
+        
+        $view->registerJs("$('#" . $this->options['id'] . "').click(function() {
+                $confirmBegin
+                $.ajax($this->ajaxOptions).done($this->done).fail($this->fail)
+                $confirmEnd   
                 return false;
             });");
     }
