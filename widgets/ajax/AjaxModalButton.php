@@ -48,7 +48,7 @@ class AjaxModalButton extends Widget
     /**
      * @var string selector for update pjax
      */
-    public $success ;
+    public $success;
 
     /**
      * @var boolean whether the label should be HTML-encoded.
@@ -65,11 +65,17 @@ class AjaxModalButton extends Widget
             $this->url = Url::to($this->url);
         }
         Html::addCssClass($this->options, 'showModal');
-        $this->options['data'] = [];
-        $this->options['data']['url'] = $this->url;
-        $this->options['data']['title'] = $this->title;
+        $data = [
+            'url'   => $this->url,
+            'title' => $this->title,
+        ];
         if ($this->success) {
-            $this->options['data']['success'] = $this->success;
+            $data['success'] = $this->success;
+        }
+        if (isset($this->options['data'])) {
+            $this->options['data'] = \yii\helpers\ArrayHelper::merge($this->options['data'],$data);
+        } else {
+            $this->options['data'] = $data;
         }
 
     }
