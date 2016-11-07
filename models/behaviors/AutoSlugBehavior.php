@@ -23,7 +23,7 @@ class AutoSlugBehavior extends Behavior
         ];
     }
 
-    public function beforeValidate($event) {
+    public function validate($event) {
         $model = $this->owner;
         if (empty($model->{$this->slugField})&&!empty($model->{$this->fieldToSlug})) {
             $model->{$this->slugField} = $this->toUrl($model->{$this->fieldToSlug});
