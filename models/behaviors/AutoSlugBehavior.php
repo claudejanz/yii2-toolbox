@@ -18,13 +18,14 @@ class AutoSlugBehavior extends Behavior
 
     public function events() {
         return [
-            ActiveRecord::EVENT_BEFORE_VALIDATE => 'beforeValidate',
+            ActiveRecord::EVENT_BEFORE_VALIDATE => 'validate',
+            ActiveRecord::EVENT_AFTER_VALIDATE => 'validate',
         ];
     }
 
     public function beforeValidate($event) {
         $model = $this->owner;
-        if (empty($model->{$this->slugField})) {
+        if (empty($model->{$this->slugField})&&!empty($model->{$this->fieldToSlug})) {
             $model->{$this->slugField} = $this->toUrl($model->{$this->fieldToSlug});
         }
     }
