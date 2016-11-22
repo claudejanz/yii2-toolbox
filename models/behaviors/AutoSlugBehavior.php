@@ -14,6 +14,7 @@ class AutoSlugBehavior extends Behavior
 
     public $slugField = 'slug';
     public $fieldToSlug = 'title';
+    public $between ;
     public $addLanguage = false;
 
     public function events() {
@@ -59,8 +60,12 @@ class AutoSlugBehavior extends Behavior
             'O', 'o', 'U', 'u', 'U', 'u', 'U', 'u', 'U', 'u', 'U', 'u', 'A', 'a', 'AE', 'ae', 'O', 'o');
 
         $str = mb_strtolower(preg_replace(array('/[^a-zA-Z0-9 \'-]/', '/[ -\']+/', '/^-|-$/'), array('', '-', ''), str_replace($a, $b, $str)));
-        if ($this->addLanguage)
+        if($this->between){
+             $str = $this->between . $str;
+        }
+        if ($this->addLanguage){
             $str = $model->language . '/' . $str;
+        }
         return $str;
     }
 
