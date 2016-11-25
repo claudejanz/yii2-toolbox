@@ -14,7 +14,7 @@ class AutoSlugBehavior extends Behavior
 
     public $slugField = 'slug';
     public $fieldToSlug = 'title';
-    public $between ;
+    public $between;
     public $addLanguage = false;
 
     public function events() {
