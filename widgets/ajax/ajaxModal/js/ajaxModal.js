@@ -49,5 +49,6 @@ $(function () {
         //dynamiclly set the header for the modal
         $('#cjModalHeaderTitle').html('<h4>' + $(this).data('title') + '</h4>');
         event.stopPropagation();
+        event.preventDefault();
     });
 });

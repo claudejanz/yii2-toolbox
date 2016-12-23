@@ -141,10 +141,12 @@ class AjaxButton extends Widget
         
         
         
-        $view->registerJs("$('#" . $this->options['id'] . "').click(function() {
+        $view->registerJs("$('#" . $this->options['id'] . "').click(function(event) {
                 $confirmBegin
                 $.ajax($this->ajaxOptions).done($this->done).fail($this->fail)
                 $confirmEnd   
+                event.preventDefault();
+                event.stopPropagation();
                 return false;
             });");
     }

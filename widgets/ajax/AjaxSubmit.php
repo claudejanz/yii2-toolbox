@@ -97,17 +97,17 @@ class AjaxSubmit extends Widget
             if (!isset($this->ajaxOptions['data'])) {
                 if ($this->useFormData) {
                     if (isset($this->options['name']) && isset($this->options['value'])) {
-                        
+
                         $this->addcode = new JsExpression('
                             var d = new FormData($(this).closest("form")[0]);
-                            d.append("'.$this->options['name'].'","'.$this->options['value'].'");
+                            d.append("' . $this->options['name'] . '","' . $this->options['value'] . '");
                             ');
 //                        $this->ajaxOptions['data'] = new JsExpression('((new FormData($(this).closest("form")[0])).append("'.$this->options['name'].'","'.$this->options['value'].'"))');
                         $this->ajaxOptions['data'] = new JsExpression('d');
-                    $this->ajaxOptions['processData'] = new JsExpression('false');
+                        $this->ajaxOptions['processData'] = new JsExpression('false');
                     } else {
                         $this->ajaxOptions['data'] = new JsExpression('new FormData($(this).closest("form")[0])');
-                    $this->ajaxOptions['processData'] = new JsExpression('false');
+                        $this->ajaxOptions['processData'] = new JsExpression('false');
                     }
                     $this->ajaxOptions['contentType'] = new JsExpression('false');
                 } else {
@@ -130,11 +130,12 @@ class AjaxSubmit extends Widget
             $this->fail = new JsExpression("function (data) { $('#cjModalContent').html(data.responseJSON.message);}");
 
         $this->ajaxOptions = Json::encode($this->ajaxOptions);
-        $view->registerJs("$('#" . $this->options['id'] . "').click(function() {
+        $view->registerJs("$('#" . $this->options['id'] . "').click(function(event) {
                 $this->addcode
                 $.ajax($this->ajaxOptions).done($this->done).fail($this->fail);
+                    event.preventDefault();
+                    event.stopPropagation();
                 return false;
             });");
     }
-
 }
