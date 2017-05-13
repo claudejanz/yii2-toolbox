@@ -35,13 +35,11 @@ $(function () {
 
                 })
                 .fail(function (data) {
-                    if (data.responseJSON) {
+                    if (typeof(data.responseJSON) != "undefined") {
                         alert(data.responseJSON.message);
-                    } else if (data.responseText) {
+                    } else if (typeof(data.responseText) != "undefined") {
                         alert(data.responseText);
-                    } else {
-                        console.log(data);
-                    }
+                    } 
                 })
                 .always(function () {
 //                    alert("complete");

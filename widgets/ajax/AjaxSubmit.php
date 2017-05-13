@@ -127,7 +127,7 @@ class AjaxSubmit extends Widget
                     }
                 }");
         if (!isset($this->fail))
-            $this->fail = new JsExpression("function (data) { $('#cjModalContent').html(data.responseJSON.message);}");
+            $this->fail = new JsExpression("function (data) { if (typeof(data.responseJSON) != 'undefined') { $('#cjModalContent').html(data.responseJSON.message);}}");
 
         $this->ajaxOptions = Json::encode($this->ajaxOptions);
         $view->registerJs("$('#" . $this->options['id'] . "').click(function(event) {
