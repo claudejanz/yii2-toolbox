@@ -25,6 +25,5 @@ class LinkWidget extends InputWidget
     public function run()
     {
         echo Html::activeHiddenInput($this->model, $this->attribute);
-        echo Html::activeHiddenInput($this->model, $this->attribute.);
     }
 }
