@@ -8,29 +8,34 @@
 
 namespace claudejanz\toolbox\widgets;
 
-use claudejanz\toolbox\widgets\base\YiiWidget;
-
-
-
+use claudejanz\toolbox\widgets\base\TraitWidetId;
+use yii\jui\Widget;
 
 /**
  * Description of BootstrapPortlet
  *
  * @author Claude
  */
-class BootstrapPortlet extends YiiWidget{
-public $title;
-public $content;
-public $color = 'default';
-public function init() {
-    echo '<div class="panel panel-default panel-'.$this->color.'">';
+class BootstrapPortlet extends Widget
+{
+
+    use TraitWidetId;
+
+    public $title;
+    public $content;
+    public $color = 'default';
+
+    public function init()
+    {
+        echo '<div class="panel panel-default panel-' . $this->color . '">';
         if ($this->title) {
             echo "<div class=\"panel-heading\">$this->title</div>";
         }
         echo "<div class=\"panel-body\">";
-}
+    }
 
-public function run() {
+    public function run()
+    {
         echo "</div>";
         echo "</div>";
     }

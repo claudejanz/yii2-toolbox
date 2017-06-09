@@ -15,12 +15,5 @@ use yii\base\Widget;
  */
 class YiiWidget extends Widget
 {
-   public function getId($autoGenerate = true)
-    {
-        if ($autoGenerate && $this->_id === null) {
-            $this->_id = static::$autoIdPrefix . static::$counter++.time();
-        }
-
-        return $this->_id;
-    }
+  use TraitWidetId;
 }

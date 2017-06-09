@@ -8,6 +8,7 @@
 
 namespace claudejanz\toolbox\widgets;
 
+use claudejanz\toolbox\widgets\base\TraitWidetId;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -22,6 +23,7 @@ use yii\web\JsExpression;
 class MySortable extends Sortable
 {
 
+    use TraitWidetId;
     public $url;
     public $itemView;
     public $key='order';
