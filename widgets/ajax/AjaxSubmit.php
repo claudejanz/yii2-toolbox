@@ -2,7 +2,7 @@
 
 namespace claudejanz\toolbox\widgets\ajax;
 
-use yii\base\Widget;
+use claudejanz\toolbox\widgets\base\YiiWidget;
 use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\web\JsExpression;
@@ -11,7 +11,7 @@ use yii\web\JsExpression;
  * AjaxSubmit renders an ajax submit.
  * @author Claude Janz <claudejanz@gmail.com>
  */
-class AjaxSubmit extends Widget
+class AjaxSubmit extends YiiWidget
 {
 
     public $ajaxOptions = [];

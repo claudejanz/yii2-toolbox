@@ -2,6 +2,7 @@
 
 namespace claudejanz\toolbox\widgets\ajax;
 
+use claudejanz\toolbox\widgets\base\TraitWidetId;
 use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\helpers\Url;
@@ -14,6 +15,8 @@ use yii\web\JsExpression;
  */
 class AjaxButton extends Widget
 {
+
+    use TraitWidetId;
 
     /**
      * @var array|string the url to execute.
@@ -50,8 +53,8 @@ class AjaxButton extends Widget
      * @var string to use for javascript confirm()
      */
     public $confirm = null;
-    
-     /**
+
+    /**
      * the javascript function to be executed on done
      * @var JsExpression
      */
@@ -137,10 +140,10 @@ class AjaxButton extends Widget
                         console.log(data);
                     }
                 }");
-        
-        
-        
-        
+
+
+
+
         $view->registerJs("$('#" . $this->options['id'] . "').click(function(event) {
                 $confirmBegin
                 $.ajax($this->ajaxOptions).done($this->done).fail($this->fail)

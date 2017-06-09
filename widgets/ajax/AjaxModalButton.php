@@ -2,7 +2,8 @@
 
 namespace claudejanz\toolbox\widgets\ajax;
 
-use yii\base\Widget;
+use claudejanz\toolbox\widgets\base\YiiWidget;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
@@ -17,7 +18,7 @@ use yii\helpers\Url;
  *
  * @author Claude
  */
-class AjaxModalButton extends Widget
+class AjaxModalButton extends YiiWidget
 {
 
     /**
@@ -73,7 +74,7 @@ class AjaxModalButton extends Widget
             $data['success'] = $this->success;
         }
         if (isset($this->options['data'])) {
-            $this->options['data'] = \yii\helpers\ArrayHelper::merge($this->options['data'],$data);
+            $this->options['data'] = ArrayHelper::merge($this->options['data'],$data);
         } else {
             $this->options['data'] = $data;
         }
