@@ -15,5 +15,5 @@ use yii\base\Widget;
  */
 class YiiWidget extends Widget
 {
-  use TraitWidetId;
+  use TraitWidgetId;
 }

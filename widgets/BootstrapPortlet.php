@@ -8,7 +8,7 @@
 
 namespace claudejanz\toolbox\widgets;
 
-use claudejanz\toolbox\widgets\base\TraitWidetId;
+use claudejanz\toolbox\widgets\base\TraitWidgetId;
 use yii\jui\Widget;
 
 /**
@@ -19,7 +19,7 @@ use yii\jui\Widget;
 class BootstrapPortlet extends Widget
 {
 
-    use TraitWidetId;
+    use TraitWidgetId;
 
     public $title;
     public $content;

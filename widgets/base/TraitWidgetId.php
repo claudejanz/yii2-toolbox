@@ -13,8 +13,9 @@ namespace claudejanz\toolbox\widgets\base;
  *
  * @author Claude
  */
-trait TraitWidetId
+trait TraitWidgetId
 {
+    private $_id;
     public function getId($autoGenerate = true)
     {
         if ($autoGenerate && $this->_id === null) {
@@ -22,5 +23,13 @@ trait TraitWidetId
         }
 
         return $this->_id;
+    }
+    /**
+     * Sets the ID of the widget.
+     * @param string $value id of the widget.
+     */
+    public function setId($value)
+    {
+        $this->_id = $value;
     }
 }

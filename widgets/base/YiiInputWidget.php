@@ -15,5 +15,5 @@ use yii\widgets\InputWidget;
  */
 class YiiInputWidget extends InputWidget
 {
-   use TraitWidetId;
+   use TraitWidgetId;
 }

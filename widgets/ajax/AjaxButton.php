@@ -2,21 +2,19 @@
 
 namespace claudejanz\toolbox\widgets\ajax;
 
-use claudejanz\toolbox\widgets\base\TraitWidetId;
+use claudejanz\toolbox\widgets\base\YiiWidget;
 use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\helpers\Url;
-use yii\jui\Widget;
 use yii\web\JsExpression;
 
 /**
  * AjaxSubmit renders an ajax submit.
  * @author Claude Janz <claudejanz@gmail.com>
  */
-class AjaxButton extends Widget
+class AjaxButton extends YiiWidget
 {
 
-    use TraitWidetId;
 
     /**
      * @var array|string the url to execute.

@@ -9,7 +9,7 @@
 namespace claudejanz\toolbox\widgets\ajax;
 
 use claudejanz\toolbox\widgets\ajax\ajaxModal\AjaxModalAsset;
-use claudejanz\toolbox\widgets\base\TraitWidetId;
+use claudejanz\toolbox\widgets\base\TraitWidgetId;
 use kartik\icons\Icon;
 use yii\bootstrap\Modal;
 use yii\web\JsExpression;
@@ -21,7 +21,7 @@ use yii\web\JsExpression;
  */
 class AjaxModal extends Modal
 {
-    use TraitWidetId;
+    use TraitWidgetId;
     public function init()
     {
         parent::init();
