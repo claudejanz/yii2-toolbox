@@ -8,9 +8,9 @@
 
 namespace claudejanz\toolbox\widgets;
 
+use claudejanz\toolbox\widgets\base\YiiWidget;
 use kartik\widgets\Alert;
 use Yii;
-use yii\bootstrap\Widget;
 
 /**
  * Alert widget renders a message from session flash. All flash messages are displayed
@@ -31,7 +31,7 @@ use yii\bootstrap\Widget;
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @author Alexander Makarov <sam@rmcreative.ru>
  */
-class Alerts extends Widget
+class Alerts extends YiiWidget
 {
 
     /**

@@ -8,7 +8,7 @@
 
 namespace claudejanz\toolbox\widgets;
 
-use yii\base\Widget;
+use claudejanz\toolbox\widgets\base\YiiWidget;
 
 
 
@@ -18,7 +18,7 @@ use yii\base\Widget;
  *
  * @author Claude
  */
-class BootstrapPortlet extends Widget{
+class BootstrapPortlet extends YiiWidget{
 public $title;
 public $content;
 public $color = 'default';

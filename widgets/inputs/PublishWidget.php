@@ -3,9 +3,9 @@
 namespace claudejanz\toolbox\widgets\inputs;
 
 use claudejanz\toolbox\models\behaviors\PublishBehavior;
+use claudejanz\toolbox\widgets\base\YiiInputWidget;
 use kartik\helpers\Html;
 use yii\helpers\Json;
-use yii\widgets\InputWidget;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,7 +18,7 @@ use yii\widgets\InputWidget;
  *
  * @author Claude
  */
-class PublishWidget extends InputWidget {
+class PublishWidget extends YiiInputWidget {
 
     function run() {
         parent::run();

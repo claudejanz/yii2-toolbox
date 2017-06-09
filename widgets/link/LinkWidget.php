@@ -1,7 +1,7 @@
 <?php
 
+use claudejanz\toolbox\widgets\base\YiiInputWidget;
 use yii\helpers\Html;
-use yii\widgets\InputWidget;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -14,7 +14,7 @@ use yii\widgets\InputWidget;
  *
  * @author Claude Janz <claude.janz@klod.ch>
  */
-class LinkWidget extends InputWidget
+class LinkWidget extends YiiInputWidget
 {
     public $attribute = 'params';
     public function init()

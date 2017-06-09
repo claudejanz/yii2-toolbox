@@ -2,10 +2,10 @@
 
 namespace claudejanz\toolbox\widgets\inputs;
 
+use claudejanz\toolbox\widgets\base\YiiInputWidget;
 use kartik\helpers\Html;
 use Yii;
 use yii\helpers\Json;
-use yii\widgets\InputWidget;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,7 +18,7 @@ use yii\widgets\InputWidget;
  *
  * @author Claude
  */
-class BooleanWidget extends InputWidget {
+class BooleanWidget extends YiiInputWidget {
 
     function run() {
         parent::run();
