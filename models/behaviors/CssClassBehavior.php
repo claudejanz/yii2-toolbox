@@ -14,12 +14,12 @@ class CssClassBehavior extends Behavior {
     public $field = 'published';
 
     
-   const CLASSCSS_DEFAULT = 1;
-    const CLASSCSS_PRIMARY = 2;
-    const CLASSCSS_SUCCESS = 3;
-    const CLASSCSS_INFO = 4;
-    const CLASSCSS_WARNING = 5;
-    const CLASSCSS_DANGER = 6;
+   const CLASSCSS_DEFAULT = 'default';
+    const CLASSCSS_PRIMARY = 'primary';
+    const CLASSCSS_SUCCESS = 'success';
+    const CLASSCSS_INFO = 'info';
+    const CLASSCSS_WARNING = 'warning';
+    const CLASSCSS_DANGER = 'danger';
 
     /**
      * @return array classcss names indexed by classcss IDs
