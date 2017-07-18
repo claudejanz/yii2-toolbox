@@ -1,5 +1,7 @@
 <?php
+
 namespace claudejanz\toolbox\widgets\base;
+
 use yii\base\Widget;
 
 /*
@@ -15,5 +17,9 @@ use yii\base\Widget;
  */
 class YiiWidget extends Widget
 {
-  use TraitWidgetId;
+
+    use TraitWidgetId;
+
+    public $options;
+
 }
