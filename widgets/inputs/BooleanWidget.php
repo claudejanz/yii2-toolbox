@@ -29,7 +29,7 @@ class BooleanWidget extends YiiInputWidget
         if (!$this->items) {
             $this->items = [1 => Yii::t('claudejanz', 'Yes'), 0 => Yii::t('claudejanz', 'No')];
         }
-        if (!$this->items) {
+        if (!$this->colors) {
             $this->colors = [1=>'btn-primary',0=>'btn-danger'];
         }
         parent::init();
