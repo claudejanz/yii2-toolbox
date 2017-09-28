@@ -8,14 +8,14 @@ This is my project toolbox
 
 Features
 -----
- - Display Widgets: [MySortable, BootstrapPortlet, Alerts](./widgets/widgets.md)
- - Input Widgets: [PublishWidget, BooleanWidget, CssClassWidget](widgets/inputs/widgets_inputs.md)
- - Ajax Modal with Pjax refresh Widgets: [AjaxButton, AjaxModal, AjaxModalButton, AjaxSubmit](widgets/ajax/widgets_ajax.md)
- - Model Behaviors: [MultilingualBehavior, PublishBehavior, OnlyBehavior, FileBehavior, AutoSlugBehavior](models/behaviors/models_behaviors.md)
- - Controller Action: [SortableAction](controllers/actions/controllers_actions.md)
- - Controller Behaviors: [PageBehavior](controllers/behaviors/controllers_behaviors.md)
- - Components: [Request](components/components.md)
- - Commands: [ClearController, RbacController](commands/commands.md)
+ - Display Widgets: [MySortable, BootstrapPortlet, Alerts](docs/guide/widgets/widgets.md)
+ - Input Widgets: [PublishWidget, BooleanWidget, CssClassWidget](docs/guide/widgets/inputs/widgets_inputs.md)
+ - Ajax Modal with Pjax refresh Widgets: [AjaxButton, AjaxModal, AjaxModalButton, AjaxSubmit](docs/guide/widgets/ajax/widgets_ajax.md)
+ - Model Behaviors: [MultilingualBehavior, PublishBehavior, OnlyBehavior, FileBehavior, AutoSlugBehavior](docs/guide/models/behaviors/models_behaviors.md)
+ - Controller Action: [SortableAction](docs/guide/controllers/actions/controllers_actions.md)
+ - Controller Behaviors: [PageBehavior](docs/guide/controllers/behaviors/controllers_behaviors.md)
+ - Components: [Request](docs/guide/components/components.md)
+ - Commands: [ClearController, RbacController](docs/guide/commands/commands.md)
 
 Installation
 ------------
