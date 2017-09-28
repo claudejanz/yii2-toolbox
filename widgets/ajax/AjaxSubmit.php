@@ -123,7 +123,7 @@ class AjaxSubmit extends YiiWidget
                         alert(data.message);
                     }
                     if($('#cjModal').data('target').data('success')){
-                        $.pjax.reload($($('#cjModal').data('target').data('success')),{timeout:false});
+                        $.pjax.reload($('#cjModal').data('target').data('success'),{timeout:false});
                     }
                 }");
         if (!isset($this->fail))
