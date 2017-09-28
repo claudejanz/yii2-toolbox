@@ -6,4 +6,4 @@ User
 
 Fake user for migrations
 
-[Back to Menu](guide-README.html/#features)
+[Back to Menu](README.md)

@@ -52,4 +52,5 @@ Yii::$app->session->setFlash(
 ```php
 echo Alerts::widget();
 ```
-[Back to Menu](guide-README.html/#features)
+
+[Back to Menu](README.md)
