@@ -123,7 +123,19 @@ class AjaxSubmit extends YiiWidget
                         alert(data.message);
                     }
                     if($('#cjModal').data('target').data('success')){
-                        $.pjax.reload($('#cjModal').data('target').data('success'),{timeout:false});
+                        var success =  $('#cjModal').data('target').data('success');
+                        var indices = [];
+                        for(var i=0; i<success.length;i++) {
+                            if (success[i] === '#') indices.push(i);
+                        }
+                        if(indices.length>1){
+                           for(var i=0; i<indices.length;i++) {
+                                var end = (i!=indices.length-1)?indices[i+1]:success.length;
+                                $.pjax.reload(success.substring(indices[i],end),{timeout:false,async:false});
+                           }
+                        }else{
+                            $.pjax.reload(success,{timeout:false});
+                        }
                     }
                 }");
         if (!isset($this->fail))
@@ -138,4 +150,5 @@ class AjaxSubmit extends YiiWidget
                 return false;
             });");
     }
+
 }

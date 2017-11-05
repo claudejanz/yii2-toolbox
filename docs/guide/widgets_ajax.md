@@ -13,6 +13,8 @@ In Layout add Ajax Modal:
 
 In view:
 
+'success' now supports mutilple updates '#update1#update2'
+
 ```php
 
 Pjax::begin(['id' => 'training' . $model->id, 'timeout' => false]);
