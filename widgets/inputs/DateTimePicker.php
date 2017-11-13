@@ -6,7 +6,7 @@
  * @author Claude Janz <claude.janz@klod.ch>
  */
 
-namespace claudejanz\toolbox\widgets;
+namespace claudejanz\toolbox\widgets\input;
 
 use claudejanz\toolbox\widgets\base\YiiInputWidget;
 
