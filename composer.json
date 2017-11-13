@@ -13,7 +13,8 @@
     "require": {
         "yiisoft/yii2-bootstrap": "*",
         "kartik-v/yii2-helpers": "*",
-        "kartik-v/yii2-widgets": "*"
+        "kartik-v/yii2-widgets": "*",
+        "eternicode/bootstrap-datepicker":"*"
     },
     "autoload": {
         "psr-4": {
