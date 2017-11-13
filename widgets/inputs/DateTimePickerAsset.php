@@ -6,7 +6,7 @@
  * @author Claude Janz <claude.janz@klod.ch>
  */
 
-namespace claudejanz\toolbox\widgets\input;
+namespace claudejanz\toolbox\widgets\inputs;
 
 use yii\web\AssetBundle;
 
@@ -14,13 +14,17 @@ use yii\web\AssetBundle;
 
 class DateTimePickerAsset extends AssetBundle
 {
-    public $sourcePath = '@vendor/eternicode/bootstrap-datepicker/dist';
+    public $sourcePath = '@bower/eonasdan-bootstrap-datetimepicker/build';
     public $js = [
-        'bootstrap-datepicker.min.js',
+        'js/bootstrap-datetimepicker.min.js',
     ];
     
+    public $css = [
+        'css/bootstrap-datetimepicker.min.css',
+    ];
     public $depends = [
-        'yii\web\JqueryAsset',
+        'claudejanz\yii2fullcalendar\MomentAsset',
         'yii\bootstrap\BootstrapAsset',
+        'yii\web\JqueryAsset'
     ];
 }

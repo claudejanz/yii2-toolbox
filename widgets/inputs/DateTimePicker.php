@@ -6,7 +6,7 @@
  * @author Claude Janz <claude.janz@klod.ch>
  */
 
-namespace claudejanz\toolbox\widgets\input;
+namespace claudejanz\toolbox\widgets\inputs;
 
 use claudejanz\toolbox\widgets\base\YiiInputWidget;
 
@@ -17,5 +17,25 @@ use claudejanz\toolbox\widgets\base\YiiInputWidget;
  */
 class DateTimePicker extends YiiInputWidget
 {
-    //put your code here
+
+    public $options = ['class' => 'form-control'];
+    public $pluginOptions=[];
+    public $type='text';
+
+    public function run()
+    {
+        echo $this->renderInputHtml($this->type);
+        $this->registerPlugin();
+    }
+
+    public function registerPlugin()
+    {
+        $view = $this->view;
+        $id = $this->options['id'];
+        DateTimePickerAsset::register($view);
+        $pluginOptions = \yii\helpers\Json::encode($this->pluginOptions);
+        $js="$('#$id').datetimepicker($pluginOptions);";
+        $view->registerJs($js);
+    }
+
 }
