@@ -23,7 +23,7 @@ class DateTimePickerAsset extends AssetBundle
         'css/bootstrap-datetimepicker.min.css',
     ];
     public $depends = [
-        'claudejanz\yii2fullcalendar\MomentAsset',
+        'claudejanz\yii2moment\MomentAsset',
         'yii\bootstrap\BootstrapAsset',
         'yii\web\JqueryAsset'
     ];
