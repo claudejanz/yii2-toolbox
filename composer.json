@@ -14,7 +14,7 @@
         "yiisoft/yii2-bootstrap": "*",
         "kartik-v/yii2-helpers": "*",
         "kartik-v/yii2-widgets": "*",
-        "bower-asset/eonasdan-bootstrap-datetimepicker":"latest"
+        "bower-asset/eonasdan-bootstrap-datetimepicker": "*"
     },
     "autoload": {
         "psr-4": {
