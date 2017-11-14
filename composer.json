@@ -14,7 +14,7 @@
         "yiisoft/yii2-bootstrap": "*",
         "kartik-v/yii2-helpers": "*",
         "kartik-v/yii2-widgets": "*",
-        "kartik-v/yii2-moment": "*",
+        "claudejanz/yii2-moment": "*",
         "bower-asset/eonasdan-bootstrap-datetimepicker": "*"
     },
     "autoload": {
