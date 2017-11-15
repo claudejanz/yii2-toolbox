@@ -115,27 +115,27 @@ class AjaxButton extends YiiWidget
 
 
 
-        if (!isset($this->done))
+        if (!isset($this->done)) {
             $successCode = "";
-        if ($this->success) {
-            $all = preg_split('@#@', $this->success, -1, PREG_SPLIT_NO_EMPTY);
-            if (count($all) > 1) {
-                foreach ($all as $value) {
-                    $successCode .= "$.pjax.reload('#$value',{timeout:false,async:false});";
+            if ($this->success) {
+                $all = preg_split('@#@', $this->success, -1, PREG_SPLIT_NO_EMPTY);
+                if (count($all) > 1) {
+                    foreach ($all as $value) {
+                        $successCode .= "$.pjax.reload('#$value',{timeout:false,async:false});";
+                    }
+                } else {
+                    $successCode .= "$.pjax.reload('$this->success',{timeout:false});";
                 }
-            } else {
-                $successCode .= "$.pjax.reload('$this->success',{timeout:false});";
             }
-        }
-        $this->done = new JsExpression("function (data) {
+            $this->done = new JsExpression("function (data) {
                     if(data.error == 1){
                         alert(data.message);
                     }else{
                        $successCode
                     }
                 }");
-
-        if (!isset($this->fail))
+        }
+        if (!isset($this->fail)) {
             $this->fail = new JsExpression("function (data) {
                     if(data.responseJSON){
                         alert(data.responseJSON.message);
@@ -145,8 +145,7 @@ class AjaxButton extends YiiWidget
                         console.log(data);
                     }
                 }");
-
-
+        }
 
 
         $view->registerJs("$('#" . $this->options['id'] . "').click(function(event) {
