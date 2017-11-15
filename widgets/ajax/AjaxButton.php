@@ -15,7 +15,6 @@ use yii\web\JsExpression;
 class AjaxButton extends YiiWidget
 {
 
-
     /**
      * @var array|string the url to execute.
      */
@@ -117,21 +116,29 @@ class AjaxButton extends YiiWidget
 
 
         if (!isset($this->done))
-            $this->done = new JsExpression("function (data) {
+            $successCode = "";
+        if ($this->success) {
+            $all = preg_split('@#@', $this->success, -1, PREG_SPLIT_NO_EMPTY);
+            if (count($all) > 1) {
+                foreach ($all as $value) {
+                    $successCode .= "$.pjax.reload('#$value',{timeout:false,async:false});";
+                }
+            } else {
+                $successCode .= "$.pjax.reload('$this->success',{timeout:false});";
+            }
+        }
+        $this->done = new JsExpression("function (data) {
                     if(data.error == 1){
                         alert(data.message);
                     }else{
-                        if(data.message){
-                            alert(data.message);
-                        }
-                        " . (($this->success) ? "$.pjax.reload('$this->success',{timeout:false});" : 'alert(data);') . "
+                       $successCode
                     }
                 }");
 
         if (!isset($this->fail))
             $this->fail = new JsExpression("function (data) {
                     if(data.responseJSON){
-                        " . (($this->success) ? "$('$this->success').html(data.responseJSON.message);" : "alert(data.responseJSON.message);") . "
+                        alert(data.responseJSON.message);
                     }else if(data.responseText){
                         alert(data.responseText);
                     }else{
