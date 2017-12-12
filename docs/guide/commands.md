@@ -28,4 +28,4 @@ batch command to creates rbac inputs
 ./yii rbac
 ```
 
-[Back to Menu](guide-README.html/#features)
+[Back to Menu](README.md)

@@ -45,7 +45,6 @@ class CssClassWidget extends YiiInputWidget {
      var color=$js_colors;
      $(this).removeClass('btn-default');
      $(this).addClass('btn-'+color[$(this).data('value')]+' active');
-     console.log(color[$(this).data('value')]);
      $('#{$wid}').val($(this).data('value'))
    });  
 });               

@@ -18,23 +18,39 @@ use yii\helpers\Json;
  *
  * @author Claude
  */
-class BooleanWidget extends YiiInputWidget {
+class BooleanWidget extends YiiInputWidget
+{
 
-    function run() {
+    public $items;
+    public $colors;
+
+    function init()
+    {
+        if (!$this->items) {
+            $this->items = [1 => Yii::t('claudejanz', 'Yes'), 0 => Yii::t('claudejanz', 'No')];
+        }
+        if (!$this->colors) {
+            $this->colors = [1=>'btn-primary',0=>'btn-danger'];
+        }
+        parent::init();
+    }
+
+    function run()
+    {
         parent::run();
 
         $wid = $this->options['id'];
 
-        echo Html::activeHiddenInput($this->model, $this->attribute);
+        $model = $this->model;
+        $attribute = $this->attribute;
+        echo Html::activeHiddenInput($model, $attribute, $this->options);
 
         echo Html::beginTag('div', ['id' => $wid . '-buttons', 'class' => 'input-group btn-group']);
-        $items = [1=>Yii::t('claudejanz','Yes'),0=>Yii::t('claudejanz','No')];
-        $colors =  ['btn-danger','btn-primary'];
-        foreach ($items as $key => $item) {
-            echo Html::button($item, ['data' => ['value' => $key], 'class' => ($key == $this->model->{$this->attribute} ? 'btn '.$colors[$key].' active' : 'btn btn-default')]);
+        foreach ($this->items as $key => $item) {
+            echo Html::button($item, ['data' => ['value' => $key], 'class' => (isset($model->$attribute) && $key == $model->$attribute ? 'btn ' . $this->colors[$key] . ' active' : 'btn btn-default')]);
         }
         echo Html::endTag('div');
-        $js_colors = Json::encode($colors);
+        $js_colors = Json::encode($this->colors);
         $js = <<<JS
  $('#{$wid}-buttons').find('button').each(function(){
    $(this).on('click',function(){
@@ -45,8 +61,8 @@ class BooleanWidget extends YiiInputWidget {
      var color=$js_colors;
      $(this).removeClass('btn-default');
      $(this).addClass(''+color[$(this).data('value')]+' active');
-     console.log(color[$(this).data('value')]);
-     $('#{$wid}').val($(this).data('value'))
+     $('#{$wid}').val($(this).data('value'));
+     $('#{$wid}')[0].onchange();
    });  
 });               
 JS;
