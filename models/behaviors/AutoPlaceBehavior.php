@@ -20,10 +20,6 @@ class AutoPlaceBehavior extends Behavior {
     }
 
     public $path_elements = array(
-        Layout::PATH_FULL => array(Place::PLACE_CONTENT_BEFORE, Place::PLACE_CONTENT_AFTER),
-        Layout::PATH_COLUMN1 => array(Place::PLACE_CONTENT_BEFORE, Place::PLACE_CONTENT_AFTER),
-        Layout::PATH_COLUMN2 => array(Place::PLACE_LEFT,Place::PLACE_CONTENT_BEFORE, Place::PLACE_CONTENT_AFTER),
-        Layout::PATH_COLUMN3 => array(Place::PLACE_LEFT, Place::PLACE_CONTENT_BEFORE, Place::PLACE_CONTENT_AFTER, Place::PLACE_RIGHT),
     );
 
     public function afterSave($event) {
