@@ -17,21 +17,24 @@ class AutoSlugBehavior extends Behavior
     public $between;
     public $addLanguage = false;
 
-    public function events() {
+    public function events()
+    {
         return [
             ActiveRecord::EVENT_BEFORE_VALIDATE => 'validate',
             ActiveRecord::EVENT_AFTER_VALIDATE => 'validate',
         ];
     }
 
-    public function validate($event) {
+    public function validate($event)
+    {
         $model = $this->owner;
-        if (empty($model->{$this->slugField})&&!empty($model->{$this->fieldToSlug})) {
+        if (empty($model->{$this->slugField}) && !empty($model->{$this->fieldToSlug})) {
             $model->{$this->slugField} = $this->toUrl($model->{$this->fieldToSlug});
         }
     }
 
-    private function toUrl($str) {
+    private function toUrl($str)
+    {
         $model = $this->owner;
         $str = trim($str);
         $a = array('À', 'Á', 'Â', 'Ã', 'Ä', 'Å', 'Æ', 'Ç', 'È', 'É', 'Ê', 'Ë', 'Ì', 'Í', 'Î', 'Ï', 'Ð',
@@ -60,10 +63,14 @@ class AutoSlugBehavior extends Behavior
             'O', 'o', 'U', 'u', 'U', 'u', 'U', 'u', 'U', 'u', 'U', 'u', 'A', 'a', 'AE', 'ae', 'O', 'o');
 
         $str = mb_strtolower(preg_replace(array('/[^a-zA-Z0-9 \'-]/', '/[ -\']+/', '/^-|-$/'), array('', '-', ''), str_replace($a, $b, $str)));
-        if($this->between){
-             $str = $this->between . $str;
+        if ($this->between) {
+            if (is_callable($this->between)) {
+                $str = call_user_func($this->between) . $str;
+            } else {
+                $str = $this->between . $str;
+            }
         }
-        if ($this->addLanguage){
+        if ($this->addLanguage) {
             $str = $model->language . '/' . $str;
         }
         return $str;
