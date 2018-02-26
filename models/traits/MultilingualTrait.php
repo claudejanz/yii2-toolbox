@@ -1,17 +1,28 @@
 <?php
 
-namespace claudejanz\toolbox\models\behaviors;
+namespace claudejanz\toolbox\models\traits;
 
 use Yii;
 use yii\db\ActiveQuery;
 
-class MultilingualQuery extends ActiveQuery
+/*
+ * @link https://www.klod.ch/ 
+ * @copyright Copyright (c) 2017 Klod SA
+ * @author Claude Janz <claude.janz@klod.ch>
+ */
+
+/**
+ * Description of OrderTrait
+ *
+ * @author Claude
+ */
+trait MultilingualTrait
 {
 
     /**
      * @var string the name of the lang field of the translation table. Default to 'language'.
      */
-    public $languageField = 'language';
+    public $languageField = '[[language]]';
 
     /**
      * Scope for querying by languages
@@ -25,18 +36,17 @@ class MultilingualQuery extends ActiveQuery
         $this->with(['translation' => function ($query) use ($language) {
                 $query->andWhere([$this->languageField => $language]);
             }]);
-                return $this;
-            }
+        return $this;
+    }
 
-            /**
-             * Scope for querying by all languages
-             * @return ActiveQuery
-             */
-            public function multilingual()
-            {
-                $this->with('translations');
-                return $this;
-            }
+    /**
+     * Scope for querying by all languages
+     * @return ActiveQuery
+     */
+    public function multilingual()
+    {
+        $this->with('translations');
+        return $this;
+    }
 
-        }
-        
+}
